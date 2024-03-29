@@ -1,8 +1,11 @@
-import { Flex } from "@chakra-ui/react";
-
+'use client';
+import HomePage from '@/components/HomePage';
+import { Box } from '@chakra-ui/react';
 
 export default function Home() {
-  return (
-    <Flex>Hello</Flex>
-  );
+	return (
+		<Box mx='auto' background='#f8f8f8' w='1280px' minH='100vh'>
+			<HomePage />
+		</Box>
+	);
 }
