@@ -160,6 +160,7 @@ if (returnDate) {
 							additionalCharges={additionalCharges}
 							duration={duration}
 							selectedCar={selectedCar}
+							discount={discount}
 							bgColor='#e6e6e3'
 						/>
 						<Text fontSize='14px' pt='8px'>
@@ -173,7 +174,9 @@ if (returnDate) {
 							waiver is not mandatory. The waiver is not insurance. I
 							acknowledge that I have received and read a copy of this.
 						</Text>
-						<Text fontSize='14px' pt='24px'>Renters Signature</Text>
+						<Text fontSize='14px' pt='24px'>
+							Renters Signature
+						</Text>
 						<Text fontSize='14px'>
 							-----------------------------------------------------------------
 						</Text>
