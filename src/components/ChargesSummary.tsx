@@ -22,6 +22,7 @@ type ChargesSummaryProps = FlexProps & {
 		tax: number;
 	};
 	selectedCar: any;
+	discount?: number;
 	borderStyle?: string;
 	headerFontSize?: string;
 	bgColor?: string;
@@ -33,6 +34,7 @@ const ChargesSummary: FC<ChargesSummaryProps> = ({
 	duration,
 	additionalCharges,
 	selectedCar,
+	discount,
 	borderStyle,
 	headerFontSize,
 	bgColor,
@@ -74,17 +76,11 @@ const ChargesSummary: FC<ChargesSummaryProps> = ({
 
 	const taxAmount = totalBeforeTax * (tax / 100);
 
-	const total = totalBeforeTax + taxAmount;
+	const totalWithTax = totalBeforeTax + taxAmount;
 
-	//  console.log('check', weeks, days, hours);
+	const discountAmount = (totalWithTax * (discount || 0)) / 100;
 
-	// STYLES
-
-	// FUNCTIONS
-
-	// EFFECTS
-
-	// COMPONENTS
+	const total = totalWithTax - discountAmount;
 
 	return (
 		<Flex direction='column' gap={4} w={width}>
@@ -157,8 +153,14 @@ const ChargesSummary: FC<ChargesSummaryProps> = ({
 							<Tr>
 								<Td>Rental Tax</Td>
 								<Td></Td>
-								<Td>{tax.toFixed(1)}%</Td>
+								<Td>{tax?.toFixed(1)}%</Td>
 								<Td>${taxAmount ? taxAmount.toFixed(2) : 0}</Td>
+							</Tr>
+							<Tr>
+								<Td>Discount</Td>
+								<Td></Td>
+								<Td>{discount ? discount?.toFixed(1) : '0.0'}%</Td>
+								<Td>${discountAmount ? discountAmount.toFixed(2) : 0}</Td>
 							</Tr>
 						</Tbody>
 						<Tfoot>

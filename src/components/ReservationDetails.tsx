@@ -3,6 +3,8 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
+	InputGroup,
+	InputRightAddon,
 	Text,
 	Tooltip,
 } from '@chakra-ui/react';
@@ -143,11 +145,22 @@ const ReservationDetails: FC<ReservationDetailsProps> = ({
 				</FormControl>
 				<FormControl>
 					<FormLabel>Discount</FormLabel>
-					<Input
-						type='number'
-						value={discount}
-						onChange={e => setDiscount(e.target.value)}
-					/>
+					<InputGroup>
+						<Input
+							type='number'
+							min='0'
+							max='100'
+							value={discount}
+							onChange={e => {
+								let value = parseInt(e.target.value);
+								if (value > 100) {
+									value = 100;
+								}
+								setDiscount(value);
+							}}
+						/>
+						<InputRightAddon children='%' />
+					</InputGroup>
 				</FormControl>
 			</Flex>
 		</Flex>

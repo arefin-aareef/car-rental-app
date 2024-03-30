@@ -29,7 +29,7 @@ const HomePage: FC<HomePageProps> = ({}) => {
 	const [pickupDate, setPickupDate] = useState('');
 	const [returnDate, setReturnDate] = useState('');
 	const [duration, setDuration] = useState('');
-	const [discount, setDiscount] = useState();
+	const [discount, setDiscount] = useState(0);
 
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
@@ -129,6 +129,7 @@ const HomePage: FC<HomePageProps> = ({}) => {
 						additionalCharges={additionalCharges}
 						duration={duration}
 						selectedCar={selectedCar}
+						discount={discount}
 						borderStyle='2px solid blue'
 						headerFontSize='20px'
 						bgColor='#dfdfff'
