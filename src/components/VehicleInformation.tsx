@@ -52,8 +52,8 @@ const VehicleInformation: FC<VehicleInformationProps> = ({
 						value={vehicleType}
 						onChange={e => setVehicleType(e.target.value)}
 					>
-						<option value='option1'>Sedan</option>
-						<option value='option2'>SUV</option>
+						<option value='Sedan'>Sedan</option>
+						<option value='SUV'>SUV</option>
 					</Select>
 				</FormControl>
 				<FormControl>

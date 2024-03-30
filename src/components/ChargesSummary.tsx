@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
-type ChargesSummaryProps = {
+type ChargesSummaryProps = FlexProps & {
 	duration?: string;
 	additionalCharges: {
 		damage: number;
@@ -22,12 +22,22 @@ type ChargesSummaryProps = {
 		tax: number;
 	};
 	selectedCar: any;
+	borderStyle?: string;
+	headerFontSize?: string;
+	bgColor?: string;
+	border?: string;
+	width?: string;
 };
 
 const ChargesSummary: FC<ChargesSummaryProps> = ({
 	duration,
 	additionalCharges,
 	selectedCar,
+	borderStyle,
+	headerFontSize,
+	bgColor,
+	border,
+	width,
 }) => {
 	// HOOKS
 
@@ -77,17 +87,19 @@ const ChargesSummary: FC<ChargesSummaryProps> = ({
 	// COMPONENTS
 
 	return (
-		<Flex direction='column' gap={4} w='480px'>
-			<Text fontWeight='700' fontSize='20px' borderBottom='2px solid blue'>
+		<Flex direction='column' gap={4} w={width}>
+			<Text
+				fontWeight='700'
+				fontSize={headerFontSize}
+				borderBottom={borderStyle}
+			>
 				Charges Summary
 			</Text>
 			<Flex
 				direction='column'
-				gap={4}
-				p={4}
-				border='1px solid #5d5cff'
+				border={border}
 				borderRadius='4px'
-				bgColor='#dfdfff'
+				bgColor={bgColor}
 			>
 				<TableContainer>
 					<Table size='sm'>
@@ -100,66 +112,54 @@ const ChargesSummary: FC<ChargesSummaryProps> = ({
 							</Tr>
 						</Thead>
 						<Tbody>
-							{hours > 0 && (
-								<Tr>
-									<Td>Hourly</Td>
-									<Td>{hours}</Td>
-									<Td>
-										{selectedCar
-											? `$${selectedCar?.rates?.hourly.toFixed(2)}`
-											: ''}
-									</Td>
-									<Td>${totalHourly ? totalHourly.toFixed(2) : 0}</Td>
-								</Tr>
-							)}
-							{days > 0 && (
-								<Tr>
-									<Td>Daily</Td>
-									<Td>{days}</Td>
-									<Td>
-										{selectedCar
-											? `S${selectedCar?.rates?.daily.toFixed(2)}`
-											: ''}
-									</Td>
-									<Td>${totalDaily ? totalDaily.toFixed(2) : 0}</Td>
-								</Tr>
-							)}
-							{weeks > 0 && (
-								<Tr>
-									<Td>Weekly</Td>
-									<Td>{weeks}</Td>
-									<Td>
-										{selectedCar
-											? `S${selectedCar?.rates?.weekly.toFixed(2)}`
-											: ''}
-									</Td>
-									<Td>${totalWeekly ? totalWeekly.toFixed(2) : 0}</Td>
-								</Tr>
-							)}
-							{damage > 0 && (
-								<Tr>
-									<Td>Collision Damage Waiver</Td>
-									<Td></Td>
-									<Td>${damage.toFixed(2)}</Td>
-									<Td>${damage.toFixed(2)}</Td>
-								</Tr>
-							)}
-							{insurance > 0 && (
-								<Tr>
-									<Td>Liability Insurance</Td>
-									<Td></Td>
-									<Td>${insurance.toFixed(2)}</Td>
-									<Td>${insurance.toFixed(2)}</Td>
-								</Tr>
-							)}
-							{tax > 0 && (
-								<Tr>
-									<Td>Rental Tax</Td>
-									<Td></Td>
-									<Td>{tax.toFixed(1)}%</Td>
-									<Td>${taxAmount ? taxAmount.toFixed(2) : 0}</Td>
-								</Tr>
-							)}
+							<Tr>
+								<Td>Hourly</Td>
+								<Td>{hours}</Td>
+								<Td>
+									{selectedCar
+										? `$${selectedCar?.rates?.hourly.toFixed(2)}`
+										: ''}
+								</Td>
+								<Td>${totalHourly ? totalHourly.toFixed(2) : 0}</Td>
+							</Tr>
+							<Tr>
+								<Td>Daily</Td>
+								<Td>{days}</Td>
+								<Td>
+									{selectedCar
+										? `S${selectedCar?.rates?.daily.toFixed(2)}`
+										: ''}
+								</Td>
+								<Td>${totalDaily ? totalDaily.toFixed(2) : 0}</Td>
+							</Tr>
+							<Tr>
+								<Td>Weekly</Td>
+								<Td>{weeks}</Td>
+								<Td>
+									{selectedCar
+										? `S${selectedCar?.rates?.weekly.toFixed(2)}`
+										: ''}
+								</Td>
+								<Td>${totalWeekly ? totalWeekly.toFixed(2) : 0}</Td>
+							</Tr>
+							<Tr>
+								<Td>Collision Damage Waiver</Td>
+								<Td></Td>
+								<Td>${damage.toFixed(2)}</Td>
+								<Td>${damage.toFixed(2)}</Td>
+							</Tr>
+							<Tr>
+								<Td>Liability Insurance</Td>
+								<Td></Td>
+								<Td>${insurance.toFixed(2)}</Td>
+								<Td>${insurance.toFixed(2)}</Td>
+							</Tr>
+							<Tr>
+								<Td>Rental Tax</Td>
+								<Td></Td>
+								<Td>{tax.toFixed(1)}%</Td>
+								<Td>${taxAmount ? taxAmount.toFixed(2) : 0}</Td>
+							</Tr>
 						</Tbody>
 						<Tfoot>
 							<Tr>
